@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item
+		android:id="@+id/cwac_richedittext_serif"
+		android:showAsAction="always|withText"
+		android:title="@string/cwac_richedittext_serif">
+	</item>
+
+  <item
+    android:id="@+id/cwac_richedittext_sans"
+    android:showAsAction="always|withText"
+    android:title="@string/cwac_richedittext_sans">
+  </item>
+
+  <item
+    android:id="@+id/cwac_richedittext_mono"
+    android:showAsAction="always|withText"
+    android:title="@string/cwac_richedittext_mono">
+  </item>
+
+</menu>

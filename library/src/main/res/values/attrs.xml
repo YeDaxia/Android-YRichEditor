@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RichTextEditor">
+        <attr name="rich_textSize" format="dimension"/>
+        <attr name="rich_textColor" format="color"/>
+        <attr name="rich_hint" format="string"/>
+        <attr name="rich_hintTextColor" format="color"/>
+        <attr name="rich_paddingLeft" format="dimension"/>
+        <attr name="rich_paddingRight" format="dimension"/>
+        <attr name="rich_paddingTop" format="dimension"/>
+        <attr name="rich_paddingBottom" format="dimension"/>
+    </declare-styleable>
+</resources>

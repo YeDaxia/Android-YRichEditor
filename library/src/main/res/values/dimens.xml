@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="rich_font_heading_1">20sp</dimen>
+    <dimen name="rich_font_heading_2">18sp</dimen>
+    <dimen name="rich_font_heading_3">16sp</dimen>
+
+    <dimen name="rich_font_paragraph">14sp</dimen>
+
+</resources>

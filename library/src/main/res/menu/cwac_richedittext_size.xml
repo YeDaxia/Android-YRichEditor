@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item
+    android:id="@+id/cwac_richedittext_grow"
+    android:showAsAction="always|withText"
+    android:title="@string/cwac_richedittext_grow">
+  </item>
+
+  <item
+    android:id="@+id/cwac_richedittext_shrink"
+    android:showAsAction="always|withText"
+    android:title="@string/cwac_richedittext_shrink">
+  </item>
+
+  <item
+    android:id="@+id/cwac_richedittext_superscript"
+    android:showAsAction="always|withText"
+    android:title="@string/cwac_richedittext_superscript">
+  </item>
+
+  <item
+    android:id="@+id/cwac_richedittext_subscript"
+    android:showAsAction="always|withText"
+    android:title="@string/cwac_richedittext_subscript">
+  </item>
+
+</menu>

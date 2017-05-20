@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/cwac_richedittext_underline"
+        android:title="@string/cwac_richedittext_underline"
+        app:showAsAction="always|withText"></item>
+
+    <item
+        android:id="@+id/cwac_richedittext_strike"
+        android:title="@string/cwac_richedittext_strikethrough"
+        app:showAsAction="always|withText"></item>
+
+    <item
+        android:id="@+id/cwac_richedittext_size"
+        android:title="@string/cwac_richedittext_size"
+        app:showAsAction="always|withText"></item>
+
+    <item
+        android:id="@+id/cwac_richedittext_color"
+        android:title="@string/cwac_richedittext_color"
+        app:showAsAction="always|withText"></item>
+
+</menu>

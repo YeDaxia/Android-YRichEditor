@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION as int
+    buildToolsVersion BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        testApplicationId "com.commonsware.cwac.test"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    sourceSets {
+        androidTest {
+            assets.srcDirs = ['../testAssets']
+        }
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt' // required for no good reason...
+    }
+}
+
+dependencies {
+    androidTestCompile 'com.android.support.test:rules:0.3'
+    compile 'com.android.support:appcompat-v7:'+SUPPORT_VERSION
+    compile 'com.android.support:support-annotations:'+SUPPORT_VERSION
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.7.2'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+}

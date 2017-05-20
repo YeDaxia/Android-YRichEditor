@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_html_paragraph"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:lineSpacingMultiplier="1.3"
+    android:textColor="#333333"
+    android:textSize="@dimen/rich_font_paragraph"
+    android:paddingLeft="@dimen/app_padding"
+    android:paddingRight="@dimen/app_padding"
+    android:paddingBottom="@dimen/paragraph_padding"
+    android:orientation="vertical">
+
+</TextView>

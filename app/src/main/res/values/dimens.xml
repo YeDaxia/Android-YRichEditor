@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="app_padding">10dp</dimen>
+    <dimen name="paragraph_padding">20dp</dimen>
+</resources>

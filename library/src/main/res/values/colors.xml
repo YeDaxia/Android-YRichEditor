@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="rich_paragraph_text_color">#333333</color>
+    <color name="rich_heading_text_color">#000000</color>
+    <color name="rich_hint_text_color">#7f7f7f</color>
+</resources>
