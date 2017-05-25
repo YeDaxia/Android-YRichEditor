@@ -31,3 +31,9 @@ an android richedtor with native implementation
 # More
 
 详细使用请查看示例，有关原理可以查看[Android原生简易图文编辑器](https://yedaxia.github.io/Android-RichEditor-And-NativeHtml/)
+
+**Thanks:**
+
+- XRichText: https://github.com/sendtion/XRichText
+- cwac-richedit: https://github.com/commonsguy/cwac-richedit
+- Html解析库Jsoup：https://jsoup.org/
