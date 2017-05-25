@@ -4,6 +4,9 @@ an android richedtor with native implementation
 
 ![](http://7ktocj.com1.z0.glb.clouddn.com/device-2017-05-25-163507.png?imageView2/0/w/500)
 
+# Demo Download
+
+![apk demo](http://7xjwoa.com1.z0.glb.clouddn.com/1495714985.png)
 
 # Feature
 
