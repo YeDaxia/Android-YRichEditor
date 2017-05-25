@@ -36,4 +36,19 @@
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_editor_absoluteY="66dp"
         app:layout_constraintHorizontal_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_rich_editor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="加载草稿"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="66dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 </LinearLayout>

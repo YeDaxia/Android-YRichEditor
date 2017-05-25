@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.tv_raw_code).setOnClickListener(this);
         findViewById(R.id.tv_rich_list).setOnClickListener(this);
+        findViewById(R.id.tv_rich_editor).setOnClickListener(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -41,9 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if("".equals(spHelper.getContent())){
             findViewById(R.id.tv_raw_code).setVisibility(View.GONE);
             findViewById(R.id.tv_rich_list).setVisibility(View.GONE);
+            findViewById(R.id.tv_rich_editor).setVisibility(View.GONE);
         }else{
             findViewById(R.id.tv_raw_code).setVisibility(View.VISIBLE);
             findViewById(R.id.tv_rich_list).setVisibility(View.VISIBLE);
+            findViewById(R.id.tv_rich_editor).setVisibility(View.VISIBLE);
         }
     }
 
@@ -55,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.tv_rich_list:
                 ShowHtmlActivity.launch(this);
+                break;
+            case R.id.tv_rich_editor:
+                EditorActivity.launch(this, spHelper.getContent());
                 break;
         }
     }

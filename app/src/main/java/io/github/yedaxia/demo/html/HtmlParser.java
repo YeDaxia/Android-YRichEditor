@@ -6,12 +6,12 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
+import org.jsoup.nodes.TextNode;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.github.yedaxia.demo.util.NumberUtils;
-import io.github.yedaxia.demo.util.StringUtils;
+import io.github.yedaxia.demo.util.YUtils;
 
 /**
  * html标签解析
@@ -27,7 +27,7 @@ public class HtmlParser {
      * @return
      */
     public static List<IHtmlElement> parse(String htmlContent) {
-        if (StringUtils.isEmpty(htmlContent)) {
+        if (YUtils.isEmpty(htmlContent)) {
             return null;
         }
         Document doc = Jsoup.parseBodyFragment(htmlContent);
@@ -48,12 +48,14 @@ public class HtmlParser {
                 String src = childNode.attr("src");
                 String width = childNode.attr("width");
                 String height = childNode.attr("height");
-                elList.add(new ImgElement(src, NumberUtils.parseInt(width, 0), NumberUtils.parseInt(height, 0)));
+                elList.add(new ImgElement(src, YUtils.parseInt(width, 0), YUtils.parseInt(height, 0)));
             } else {
                 if (childNode instanceof Element) {
                     elList.add(new PElement(Html.fromHtml(((Element) childNode).html())));
-                } else {
-                    elList.add(new PElement(htmlContent));
+                } else if(childNode instanceof TextNode){
+                    elList.add(new PElement(((TextNode) childNode).text()));
+                }else {
+                    elList.add(new PElement(childNode.outerHtml()));
                 }
             }
         }

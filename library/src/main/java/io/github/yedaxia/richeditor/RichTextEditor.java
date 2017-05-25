@@ -43,8 +43,8 @@ public class RichTextEditor extends ScrollView implements IRichEditor{
     private EditText currentFocusEdit; // 最近被聚焦的EditText
 
     private IUploadEngine mUploadEngine;
-
     private RichEditText.OnSelectionChangedListener selectChangeListener;
+    private IImageLoader mImageLoader;
 
     private final RichEditText.OnSelectionChangedListener wrapSelectChangeListener = new RichEditText.OnSelectionChangedListener() {
         @Override
@@ -135,6 +135,14 @@ public class RichTextEditor extends ScrollView implements IRichEditor{
      */
     public void setUploadEngine(IUploadEngine uploadEngine){
         this.mUploadEngine = uploadEngine;
+    }
+
+    /**
+     * 设置图片加载器
+     * @param imageLoader
+     */
+    public void setImageLoader(IImageLoader imageLoader){
+        this.mImageLoader = imageLoader;
     }
 
     /**
@@ -230,6 +238,8 @@ public class RichTextEditor extends ScrollView implements IRichEditor{
             String tagName = childNode.nodeName();
             if(tagName.equalsIgnoreCase("p")){
                 addPEditTextAtIndex(pos, Html.fromHtml(((Element)childNode).html()));
+            }else if(tagName.equalsIgnoreCase("h1")){
+                addHEditTextAtIndex(HEADING_1, pos, ((Element)childNode).html());
             }else if(tagName.equalsIgnoreCase("img")){
                 Uri imgUri = Uri.parse(childNode.attr("src"));
                 addImageViewAtIndex(pos, imgUri);
@@ -404,6 +414,7 @@ public class RichTextEditor extends ScrollView implements IRichEditor{
     private void addImageViewAtIndex(final int index, Uri imgUri) {
         final RelativeLayout imageLayout = createImageLayout();
         EditImageView imageView = (EditImageView) imageLayout.findViewById(R.id.edit_imageView);
+        imageView.setImageLoader(mImageLoader);
         imageView.setUploadEngine(mUploadEngine);
         imageView.setImageAndUpload(imgUri);
         rootLayout.addView(imageLayout, index);

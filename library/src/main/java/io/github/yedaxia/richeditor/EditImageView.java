@@ -1,28 +1,31 @@
 package io.github.yedaxia.richeditor;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
 
-import com.bumptech.glide.Glide;
-
 /**
- * 这只是一个简单的ImageView，可以存放Bitmap和Path等信息
+ * 编辑框内的ImageView，包含了上传图片的逻辑
  *
- * @author xmuSistone
+ * @author Darcy https://yedaxia.github.io/
+ * @version 2017/5/20.
  */
 public class EditImageView extends AppCompatImageView
         implements IUploadEngine.UploadProgressListener{
 
     private IUploadEngine uploadEngine;
+    private IImageLoader imageLoader;
+
     private Uri mUri;
     private String uploadUrl;
 
@@ -51,6 +54,10 @@ public class EditImageView extends AppCompatImageView
 
     void setUploadEngine(IUploadEngine engine){
         this.uploadEngine = engine;
+    }
+
+    void setImageLoader(IImageLoader imageLoader){
+        this.imageLoader = imageLoader;
     }
 
     @Override
@@ -84,25 +91,28 @@ public class EditImageView extends AppCompatImageView
     private void resizeImageView(Uri uri){
         final int viewWidth = getWidth() - getPaddingLeft() - getPaddingRight();
         int viewHeight;
-        if(uri == null || !uri.toString().startsWith("file://")){
-            viewHeight = (int)(viewWidth * 0.5);
-        }else{
-            final int[] imgWH = getImageSize(uri);
+        if(uri != null && YUtils.isLocalUri(uri)){
+            final int[] imgWH = YUtils.getImageSize(getContext(), uri);
             final float whProp = ((float)imgWH[1]) /imgWH[0];
             viewHeight = (int)(whProp > 2 ? viewWidth * 2 : viewWidth * whProp);
+        }else{
+            viewHeight = (int)(viewWidth * 0.5);
         }
         getLayoutParams().height = viewHeight;
         requestLayout();
-        Glide.with(getContext()).load(uri).centerCrop().override(viewWidth,viewHeight).into(this);
+        if(imageLoader == null){
+            throw new RuntimeException(" you must set a imageloader implementation by yourself～");
+        }
+        imageLoader.loadIntoImageView(this, uri);
     }
 
     /**
-     * 发起上传
+     * 上传本地图片
      */
     public void doUpload(){
-        if(uploadEngine != null && mUri != null && mUri.toString().startsWith("file://")
+        if(uploadEngine != null && mUri != null && YUtils.isLocalUri(mUri)
                 && (uploadStatus == 0 || uploadStatus == IUploadEngine.STATUS_UPLOAD_FAIL)){
-            Log.i("EditImageView", "upload img start..." + mUri.getPath());
+            Log.i("EditImageView", "upload img start..." + mUri);
             uploadStatus = IUploadEngine.STATUS_UPLOAD_START;
             uploadEngine.uploadImage(mUri, this);
         }
@@ -152,7 +162,7 @@ public class EditImageView extends AppCompatImageView
      * @return
      */
     public int getUploadStatus(){
-        return uploadStatus;
+        return YUtils.isHttp(uploadUrl) ? IUploadEngine.STATUS_UPLOAD_SUCCESS : uploadStatus;
     }
 
     /**
@@ -162,19 +172,5 @@ public class EditImageView extends AppCompatImageView
     public String getHtml(){
         final String imgSrc = uploadUrl == null ? mUri.toString() : uploadUrl;
         return String.format("<img src=\"%s\" width=\"%d\" height=\"%d\"/>",imgSrc,uploadImageWidth,uploadImageHeight);
-    }
-
-    /**
-     * 获取图片大小
-     * @param uri
-     * @return
-     */
-    private int[] getImageSize(Uri uri){
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        final String uriString = uri.toString();
-        final String filePath = uriString.substring(uriString.indexOf("://") + 3);
-        BitmapFactory.decodeFile(filePath, options);
-        return new int[]{options.outWidth, options.outHeight};
     }
 }

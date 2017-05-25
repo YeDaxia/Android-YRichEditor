@@ -5,9 +5,14 @@
     tools:context="com.sendtion.xrichtextdemo.ui.NewActivity">
 
     <item
-        android:id="@+id/action_new_save"
+        android:id="@+id/action_save_draft"
         android:orderInCategory="100"
-        android:title="保存"
+        android:title="保存草稿"
         app:showAsAction="always" />
-
+    、
+    <item
+        android:id="@+id/action_post"
+        android:orderInCategory="100"
+        android:title="提交服务器"
+        app:showAsAction="always" />
 </menu>
