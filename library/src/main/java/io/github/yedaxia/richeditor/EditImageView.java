@@ -94,7 +94,7 @@ public class EditImageView extends AppCompatImageView
         if(uri != null && YUtils.isLocalUri(uri)){
             final int[] imgWH = YUtils.getImageSize(getContext(), uri);
             final float whProp = ((float)imgWH[1]) /imgWH[0];
-            viewHeight = (int)(whProp > 2 ? viewWidth * 2 : viewWidth * whProp);
+            viewHeight = (int)(whProp > 1 ? viewWidth  : viewWidth * whProp);
         }else{
             viewHeight = (int)(viewWidth * 0.5);
         }
