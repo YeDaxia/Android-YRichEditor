@@ -10,6 +10,7 @@ an android richedtor with native implementation
 1. 支持图文并排。
 2. 支持加粗和链接。
 3. 支持本地图片和网络图片。
+4. 自定义图片加载和图片上传。
 
 # Output
 
