@@ -6,7 +6,7 @@ an android richedtor with native implementation
 
 # Demo Download
 
-![apk demo](http://7xjwoa.com1.z0.glb.clouddn.com/1495714985.png)
+![apk demo](http://7xjwoa.com1.z0.glb.clouddn.com/1495715723.png)
 
 # Feature
 
